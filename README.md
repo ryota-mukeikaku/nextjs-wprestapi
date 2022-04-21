@@ -43,3 +43,22 @@ v8.0.x
 #### ライブラリ追加
 
 `npm run composer-require`
+
+## ファイル構成
+
+.
+├── .composer
+├── .wp WordPress 本体（wp-config.php と.htaccess）
+├── plugins WordPress のプラグイン
+├── theme WordPress のテーマ
+├── blocks Gutenberg カスタムブロックの src
+├── components
+├── layouts
+├── libs
+├── manuscripts
+├── pages
+├── utils
+├── public
+├── styles
+├── types
+└── scripts セットアップ用のシェル
