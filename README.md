@@ -62,3 +62,9 @@ v8.0.x
 ├── styles
 ├── types
 └── scripts セットアップ用のシェル
+
+## WordPress
+
+初期ログインアイパス
+user: root
+pass: root
