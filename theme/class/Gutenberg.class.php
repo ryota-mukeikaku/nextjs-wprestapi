@@ -12,6 +12,10 @@ class Gutenberg
     private function __construct()
     {
         add_filter('init', [$this, 'init_callback']);
+        // アイキャッチを有効化
+        add_action('after_setup_theme', function (): void {
+            add_theme_support('post-thumbnails');
+        });
     }
 
     public static function init(): void
@@ -23,10 +27,6 @@ class Gutenberg
 
     public function init_callback(): void
     {
-        // アイキャッチを有効化
-        add_action('after_setup_theme', function (): void {
-            add_theme_support('post-thumbnails');
-        });
 
         // カスタムブロック追加
         $this->add_custom_blocks();
