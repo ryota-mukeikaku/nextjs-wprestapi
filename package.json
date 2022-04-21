@@ -7,7 +7,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "npm run lint && lint-staged -c .lintstagedrc.js && if [ -n \"$(git diff --cached --name-only --diff-filter=DR -- .env-sample)\"  ]; then echo 'Error : Do not rename or remove .env-sample, it should be copy to .env'; exit 1; fi",
-    "prepare": "husky install && husky add .husky/pre-commit",
+    "prepare": "husky install && husky add .husky/pre-commit \"npm test\"",
     "dump": "docker-compose exec db bash -c \"mysqldump -uroot -p\\$MYSQL_ROOT_PASSWORD -hlocalhost -B \\$MYSQL_DATABASE -v --skip-comments -r /docker-entrypoint-initdb.d/wp.sql && gzip -9vf /docker-entrypoint-initdb.d/wp.sql\"",
     "composer-setup": "docker-compose exec web bash -c \"cd /var/www/composer && php -r \\\"copy('https://getcomposer.org/installer', 'composer-setup.php');\\\" && php composer-setup.php\"",
     "composer-install": "docker-compose exec web bash -c \"cd /var/www/composer && php composer.phar install\"",
