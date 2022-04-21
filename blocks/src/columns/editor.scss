@@ -1,0 +1,13 @@
+.wp-block-theme-columns {
+  padding: 2rem 0;
+  & > .block-editor-inner-blocks > .block-editor-block-list__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  &__inner {
+    padding: 10px;
+    border: 1px solid #757575;
+    border-radius: 2px;
+  }
+}

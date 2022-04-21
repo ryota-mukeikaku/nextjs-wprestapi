@@ -1,0 +1,39 @@
+%table {
+    .table {
+        @apply w-full overflow-x-scroll;
+
+        figcaption {
+            @apply text-center text-12;
+        }
+
+        &.is-style-l {
+            td:first-child {
+                @apply bg-gray-light font-bold;
+            }
+        }
+
+        &.is-style-t {
+            tr:first-child td {
+                @apply bg-gray-light font-bold;
+            }
+        }
+
+        &.is-style-lt {
+            tr:first-child td {
+                @apply bg-gray-light font-bold;
+            }
+
+            td:first-child {
+                @apply bg-gray-light font-bold;
+            }
+        }
+    }
+
+    table {
+        @apply w-max m:w-full border-l border-t;
+    }
+
+    td {
+        @apply border-r border-b;
+    }
+}

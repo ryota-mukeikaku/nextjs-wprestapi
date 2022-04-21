@@ -1,0 +1,40 @@
+.wp-block-theme-profile {
+  padding: 2rem 0;
+  display: flex;
+  gap: 20px;
+  &__thumb {
+    text-align: center;
+    width: 200px;
+    flex: none;
+  }
+  &__picture {
+    aspect-ratio: 1;
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: gray;
+    margin-bottom: 10px;
+  }
+  &__image {
+    display: block;
+    width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+  }
+  &__data {
+    flex: 1;
+  }
+  &__description {
+    border: 1px solid #757575;
+    border-radius: 2px;
+    padding: 6px 8px;
+    margin-bottom: calc(8px);
+  }
+  .components-base-control__label {
+    display: block;
+  }
+  .block-editor-url-input__input {
+    border: 1px solid #757575 !important;
+    border-radius: 2px !important;
+  }
+}

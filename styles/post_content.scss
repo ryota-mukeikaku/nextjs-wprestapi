@@ -1,0 +1,32 @@
+@use './block/core.scss';
+@use './block/list.scss';
+@use './block/table.scss';
+@use './block/blockquote.scss';
+
+@use './block/dl.scss';
+@use './block/button.scss';
+@use './block/cv.scss';
+@use './block/relation.scss';
+@use './block/columns.scss';
+@use './block/speech.scss';
+@use './block/toc.scss';
+@use './block/profile.scss';
+
+.post_content {
+    & > * {
+        @apply mb-30;
+    }
+    @extend %core;
+    @extend %list;
+    @extend %table;
+    @extend %blockquote;
+
+    @extend %dl;
+    @extend %button;
+    @extend %cv;
+    @extend %relation;
+    @extend %columns;
+    @extend %speech;
+    @extend %toc;
+    @extend %profile;
+}

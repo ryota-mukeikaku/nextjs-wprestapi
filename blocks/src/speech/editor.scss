@@ -1,0 +1,36 @@
+.block-editor-block-list__layout .block-editor-block-list__block:after {
+  display: none;
+}
+.wp-block-theme-speech {
+  padding: 2rem 0;
+  display: flex;
+  gap: 20px;
+  &.is-style-reverse {
+    flex-direction: row-reverse;
+  }
+  &__thumb {
+    width: 100px;
+    flex: none;
+    text-align: center;
+  }
+  &__picture {
+    aspect-ratio: 1;
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: gray;
+    margin-bottom: 10px;
+  }
+  &__image {
+    display: block;
+    width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+  }
+  &__text {
+    flex: 1;
+    border: 1px solid #757575;
+    border-radius: 2px;
+    padding: 6px 8px;
+  }
+}

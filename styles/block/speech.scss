@@ -1,0 +1,25 @@
+%speech {
+    .theme-speech {
+        @apply flex gap-20;
+
+        &.is-style-reverse {
+            @apply flex-row-reverse;
+        }
+
+        &__thumb {
+            @apply w-120 flex-none;
+        }
+
+        &__name {
+            @apply text-12 text-center font-bold;
+        }
+
+        &__picture {
+            @apply aspect-square overflow-hidden rounded-half;
+        }
+
+        &__image {
+            @apply w-full h-full object-cover;
+        }
+    }
+}

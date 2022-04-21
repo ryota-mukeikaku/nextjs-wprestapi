@@ -1,0 +1,37 @@
+%core {
+    h2 {
+        @apply text-36 mt-64;
+    }
+
+    h3 {
+        @apply text-24 mt-48;
+    }
+
+    strong {
+        @apply font-bold;
+    }
+
+    em {
+        @apply italic;
+    }
+
+    a:not([class]) {
+        @apply text-red Hover:hover:underline;
+    }
+
+    .image {
+        figcaption {
+            @apply text-12 text-center mt-8;
+        }
+    }
+
+    .embed {
+        iframe {
+            @apply w-full h-auto aspect-video;
+        }
+
+        figcaption {
+            @apply text-12 text-center mt-8;
+        }
+    }
+}

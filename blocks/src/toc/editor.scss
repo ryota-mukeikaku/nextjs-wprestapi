@@ -1,0 +1,18 @@
+.wp-block-theme-toc {
+  padding: 2rem 0;
+  counter-increment: toc 0;
+  &__data {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+  }
+  &__list {
+    list-style: none;
+  }
+  &__item {
+    counter-increment: toc;
+    &::before {
+      content: counter(toc) ". ";
+    }
+  }
+}

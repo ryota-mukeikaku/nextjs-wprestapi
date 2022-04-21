@@ -1,0 +1,13 @@
+%blockquote {
+    blockquote {
+        @apply p-20 border;
+
+        p {
+            @apply before:content-['"'] after:content-['"'] before:block after:block after:text-right;
+        }
+
+        cite {
+            @apply block not-italic text-12 text-right;
+        }
+    }
+}

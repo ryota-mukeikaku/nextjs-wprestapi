@@ -1,0 +1,17 @@
+%cv {
+    .theme-cv {
+        @apply p-40 bg-gray-light;
+
+        &__heading {
+            @apply mb-10 text-24 font-bold text-center;
+        }
+
+        &__buttons {
+            @apply flex flex-col gap-20;
+        }
+
+        &__text {
+            @apply mt-10 text-12 text-center;
+        }
+    }
+}

@@ -1,0 +1,9 @@
+%dl {
+    dl {
+        @apply border-t last:border-b py-20 gap-20 flex flex-col m:flex-row;
+    }
+
+    dt {
+        @apply font-bold m:w-180 m:flex-none;
+    }
+}

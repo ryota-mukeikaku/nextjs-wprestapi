@@ -1,0 +1,19 @@
+%toc {
+    .theme-toc {
+        @apply border p-20;
+
+        &__title {
+            @apply font-bold border-b mb-10;
+        }
+
+        &__item {
+            .theme-toc__list {
+                @apply ml-40 my-10;
+            }
+        }
+
+        &__link {
+            @apply underline;
+        }
+    }
+}

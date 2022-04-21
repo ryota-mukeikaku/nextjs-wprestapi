@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    font-size: calc(10 / 375 * 100vw);
+}
+
+@screen s {
+    html {
+        font-size: calc(10 / 768 * 100vw);
+    }
+}
+
+@screen m {
+    html {
+        font-size: calc(10 / 1024 * 100vw);
+    }
+}
+
+@screen l {
+    html {
+        font-size: calc(10 / 1440 * 100vw);
+    }
+}
+
+@screen xl {
+    html {
+        font-size: calc(10 / 1920 * 100vw);
+    }
+}
+
+body {
+    width: 100vw;
+    overflow-x: hidden;
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-touch-callout: none;
+    @apply text-base font-jp;
+}
+
+img,
+picture,
+video,
+svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}

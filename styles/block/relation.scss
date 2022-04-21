@@ -1,0 +1,7 @@
+%relation {
+    .theme-relation__link {
+        @apply grid border p-20 gap-20;
+
+        grid-template-columns: 200px 1fr;
+    }
+}

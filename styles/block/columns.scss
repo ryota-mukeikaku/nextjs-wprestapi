@@ -1,0 +1,11 @@
+%columns {
+    .theme-columns {
+        @apply grid grid-cols-1 m:grid-cols-2 gap-20;
+
+        .column {
+            & > *:not(:first-child) {
+                @apply mt-20;
+            }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+.wp-block-theme-relation {
+  padding: 2rem 0;
+  &__input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  &__url {
+    input {
+      border: 1px solid #757575 !important;
+      border-radius: 2px !important;
+      width: 100% !important;
+    }
+  }
+  &__content {
+    display: flex;
+    gap: 20px;
+  }
+  &__thumb {
+    width: 200px;
+    flex: none;
+  }
+  &__title {
+    font-weight: bold;
+  }
+  &__description {
+    margin-top: 10px;
+  }
+  &__error {
+    color: red;
+  }
+  .components-toggle-control {
+    display: flex;
+    align-items: center;
+  }
+  .components-form-toggle {
+    margin-bottom: 0 !important;
+  }
+}

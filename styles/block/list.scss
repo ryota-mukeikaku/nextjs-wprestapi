@@ -1,0 +1,49 @@
+%list {
+    ol,
+    ul {
+        ol,
+        ul {
+            @apply ml-40 my-10;
+        }
+    }
+
+    li {
+        @apply relative pl-20;
+
+        &::before {
+            @apply absolute left-0;
+        }
+    }
+
+    ul {
+        li {
+            &::before {
+                content: '・';
+            }
+        }
+    }
+
+    ol {
+        counter-increment: ol 0;
+
+        li {
+            counter-increment: ol;
+
+            &::before {
+                content: counter(ol) '. ';
+            }
+
+            ol {
+                counter-increment: olol 0;
+
+                li {
+                    counter-increment: olol;
+
+                    &::before {
+                        content: counter(olol) '. ';
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,1 @@
+.wp-block-theme-toc{counter-increment:toc 0;padding:2rem 0}.wp-block-theme-toc__data{align-items:flex-end;display:flex;gap:20px}.wp-block-theme-toc__list{list-style:none}.wp-block-theme-toc__item{counter-increment:toc}.wp-block-theme-toc__item:before{content:counter(toc) ". "}

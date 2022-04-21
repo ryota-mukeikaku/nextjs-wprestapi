@@ -1,0 +1,15 @@
+%button {
+    .theme-button {
+        @apply w-fit mx-auto;
+
+        &__link {
+            @apply block w-fit py-20 px-40 rounded-40 transition-all duration-500 text-white bg-gray-dark border border-gray-dark Hover:hover:text-gray-dark Hover:hover:bg-white;
+        }
+
+        &--reverse {
+            .theme-button__link {
+                @apply text-gray-dark bg-white Hover:hover:text-white Hover:hover:bg-gray-dark;
+            }
+        }
+    }
+}

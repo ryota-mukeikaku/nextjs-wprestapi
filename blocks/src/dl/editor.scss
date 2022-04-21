@@ -1,0 +1,20 @@
+.wp-block-theme-dl {
+  padding: 2rem 0;
+  &__item {
+    display: flex;
+    width: 100%;
+    margin: 0;
+  }
+  &__dt {
+    width: 30%;
+  }
+  &__dd {
+    width: 55%;
+    border: 1px solid #757575;
+    border-radius: 2px;
+    padding: 6px 8px;
+  }
+  &__delete {
+    flex: 1;
+  }
+}

@@ -1,0 +1,25 @@
+%profile {
+    .theme-profile {
+        @apply flex gap-20 border p-20;
+
+        &__thumb {
+            @apply w-120 flex-none;
+        }
+
+        &__picture {
+            @apply aspect-square overflow-hidden rounded-half;
+        }
+
+        &__image {
+            @apply w-full h-full object-cover;
+        }
+
+        &__name {
+            @apply font-bold;
+        }
+
+        &__position {
+            @apply font-bold;
+        }
+    }
+}

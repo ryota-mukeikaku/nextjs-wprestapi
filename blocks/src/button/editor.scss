@@ -1,0 +1,48 @@
+.wp-block-theme-button {
+    padding: 2rem 0;
+    &__item {
+        display: flex;
+        gap: 20px;
+    }
+    &__input {
+        flex: 1;
+    }
+    &__input-line {
+        display: flex;
+        gap: 20px;
+    }
+    &__input-text {
+        width: 100%;
+    }
+    &__href {
+        width: 100%;
+        input {
+            border: 1px solid #757575 !important;
+            border-radius: 2px !important;
+            width: 100% !important;
+        }
+    }
+    &__link {
+        width: fit-content;
+        background-color: gray;
+        color: white;
+        border: 1px solid gray;
+        padding: 20px 40px;
+        border-radius: 40px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &--reverse &__link {
+        color: gray;
+        background-color: white;
+    }
+    .components-base-control__field {
+        display: flex;
+    }
+    .components-text-control__input {
+        padding: 8px 8px 8px 12px;
+    }
+    .components-radio-control__option:not(:first-child) {
+        margin-left: 10px;
+    }
+}
