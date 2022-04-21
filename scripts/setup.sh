@@ -8,7 +8,7 @@ if [ ! -e .env ]; then
     cp .env-sample .env
 fi
 
-docker-compose --build
+docker-compose build
 docker-compose up -d
 
 if [ ! -e .git ]; then
