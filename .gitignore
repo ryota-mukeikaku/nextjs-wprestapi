@@ -42,6 +42,7 @@ yarn-error.log*
 
 /plugins/hello.php
 /plugins/akismet
+/plugins/index.php
 
 /blocks/node_modules
 
