@@ -40,11 +40,11 @@ class MyDocument extends Document<{ spriteContent: string }> {
                         crossOrigin='true'
                     ></link>
                     <link
-                        href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Open+Sans:wght@500&display=swap'
+                        href='https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=Montserrat&display=swap'
                         rel='stylesheet'
                     />
                 </Head>
-                <body>
+                <body id="top">
                     <div
                         dangerouslySetInnerHTML={{
                             __html: this.props.spriteContent

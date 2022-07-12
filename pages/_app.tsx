@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
 import Head from 'next/head'
@@ -9,16 +9,18 @@ import Layout from '@/layouts/Layout'
 import '@/styles/global.scss'
 import '@/styles/layout.scss'
 import '@/styles/post_content.scss'
-import PageTransition from '@/components/PageTransition'
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
+import Steam from '@/components/Steam'
 
 function MyApp({ Component, pageProps }: AppProps) {
     const router = useRouter()
-    const [pageTransitioning, setPageTransitioning] = useState(false)
+
+    const [loaded, setLoaded] = useState(false)
 
     useEffect(() => {
         const routeChangeStart = (url: string) => {
-            if (url !== router.pathname) {
-                setPageTransitioning(true)
+            if (url !== router.pathname && url !== router.pathname + '/') {
+                //
             }
         }
 
@@ -54,12 +56,14 @@ function MyApp({ Component, pageProps }: AppProps) {
     `
                 }}
             />
-            {pageTransitioning && (
-                <PageTransition setPageTransitioning={setPageTransitioning} />
-            )}
-            <Layout>
-                <Component {...pageProps} />
-            </Layout>
+            <GoogleReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_PUBLIC_KEY}>
+                {!loaded && (
+                    <Steam setLoaded={setLoaded} />
+                )}
+                <Layout>
+                    <Component {...pageProps} />
+                </Layout>
+            </GoogleReCaptchaProvider>
         </>
     )
 }

@@ -11,7 +11,7 @@ const ArticleList = (props: Props) => {
     return (
         <>
             {posts && (
-                <div className={className ? className : ''}>
+                <div className={`grid gap-y-60 @PC:gap-y-160 gap-x-160 @PC:grid-cols-2 ${className}`}>
                     {posts.map((post) => {
                         return <ArticleItem post={post} key={post.id} />
                     })}

@@ -15,14 +15,14 @@ const ArchivePagination = (props: Props) => {
     const url = (num: number) => {
         if (mode === 'post_type') {
             if (slug === 'article') {
-                return `/page/${num}`
+                return `/article/page/${num}`
             } else {
                 return `/${slug}/page/${num}`
             }
         } else {
             return num === 1
-                ? `/${mode}/${slug}/`
-                : `/${mode}/${slug}/page/${num}`
+                ? `/article/${mode}/${slug}/`
+                : `/article/${mode}/${slug}/page/${num}`
         }
     }
     return (

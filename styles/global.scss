@@ -8,19 +8,19 @@ html {
 
 @screen s {
     html {
-        font-size: calc(10 / 768 * 100vw);
+        font-size: calc(10 / 375 * 100vw);
     }
 }
 
 @screen m {
     html {
-        font-size: calc(10 / 1024 * 100vw);
+        font-size: calc(10 / 1920 * 100vw);
     }
 }
 
 @screen l {
     html {
-        font-size: calc(10 / 1440 * 100vw);
+        font-size: calc(10 / 1920 * 100vw);
     }
 }
 
@@ -52,4 +52,96 @@ svg {
 a {
     color: inherit;
     text-decoration: inherit;
+}
+
+.pc-show {
+    @apply hidden @PC:block;
+}
+
+.sp-show {
+    @apply @PC:hidden;
+}
+
+.u-dotted {
+    display: block;
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20width%3D%2211%22%20height%3D%222%22%20viewBox%3D%220%200%2011%202%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%20%3Crect%20width%3D%223%22%20height%3D%222%22%20rx%3D%221%22%20fill%3D%22%231D1D1D%22%20%2F%3E%3C%2Fsvg%3E');
+    background-position: left bottom; /* 背景の開始位置を指定 */
+    background-repeat: repeat-x; /* 横向きにのみ繰り返す */
+}
+
+.breadcrumbs__item {
+    &:not(:last-child) {
+        &:after {
+            content: '>';
+            padding-left: 1.4rem;
+            padding-right: 1.4rem;
+        }
+    }
+}
+
+.index-mv-bg-1 {
+    mask-image: url('/images/index-mv-image-clip.svg');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+}
+
+.special-bg-1 {
+    mask-image: url('/images/special-bg-1.svg');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+}
+
+.special-bg-2 {
+    mask-image: url('/images/special-bg-2.svg');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+}
+
+.special-bg-3 {
+    mask-image: url('/images/special-bg-3.svg');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+}
+
+.special-bg-4 {
+    mask-image: url('/images/special-bg-4.svg');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+}
+
+.special-bg-5 {
+    mask-image: url('/images/special-bg-5.svg');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+}
+
+.grecaptcha-badge {
+    display: none;
+}
+
+.about-bg-sp {
+    mask-image: url('/images/about-bg-sp.svg');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+}
+
+.about-bg-pc {
+    mask-image: url('/images/about-bg-pc.svg');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+}
+
+.about-text {
+    writing-mode: vertical-lr;
+}
+
+.u-keep {
+    word-break: keep-all;
+}
+
+.u-line-clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
 }

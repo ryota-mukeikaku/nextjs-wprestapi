@@ -1,14 +1,22 @@
 %list {
+    .post_content {
+        & > ol,
+        & > ul {
+            counter-reset: ol;
+            counter-increment: ol 0;
+            @apply mt-20;
+        }
+    }
     ol,
     ul {
         ol,
         ul {
-            @apply ml-40 my-10;
+            @apply ml-16;
         }
     }
 
     li {
-        @apply relative pl-20;
+        @apply relative;
 
         &::before {
             @apply absolute left-0;
@@ -17,20 +25,28 @@
 
     ul {
         li {
+            @apply pl-20;
             &::before {
-                content: '・';
+                content: '';
+                @apply bg-orange w-10 h-10 rounded-half translate-y-11 @PC:translate-y-12;
             }
         }
     }
-
-    ol {
-        counter-increment: ol 0;
-
+    ol.term-list {
         li {
-            counter-increment: ol;
+            @apply pl-24 @PC:pl-32 font-en;
 
             &::before {
-                content: counter(ol) '. ';
+                content: counter(ol) '.';
+            }
+        }
+    }
+    ol {
+        li {
+            @apply pl-39 @PC:pl-52;
+            counter-increment: ol;
+            &::before {
+                content: '（' counter(ol) '）';
             }
 
             ol {

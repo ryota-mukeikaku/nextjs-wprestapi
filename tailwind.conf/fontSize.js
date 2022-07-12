@@ -1,14 +1,14 @@
-const fontSizeSetting = {};
+const fontSizeSetting = {}
 for (let i = 1; i <= 100; i++) {
-  fontSizeSetting[i] = `${i / 10}rem`;
+    fontSizeSetting[i] = `${i / 10}rem`
 }
 module.exports = {
-  ...fontSizeSetting,
-  base: [
-    "1.6rem",
-    {
-      letterSpacing: "0.03em",
-      lineHeight: "1.8",
-    },
-  ],
-};
+    ...fontSizeSetting,
+    base: [
+        '1.6rem',
+        {
+            letterSpacing: '0.05em',
+            lineHeight: '1.8'
+        }
+    ]
+}

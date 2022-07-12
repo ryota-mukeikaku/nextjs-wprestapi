@@ -35,6 +35,7 @@ services:
     volumes:
       - ./.composer:/var/www/composer
       - ./.wp:/var/www/html
+      - ./api:/var/www/html/api
       - ./.env:/var/www/.env
       - ./theme:/var/www/html/wp-content/themes/theme
       - ./plugins:/var/www/html/wp-content/plugins

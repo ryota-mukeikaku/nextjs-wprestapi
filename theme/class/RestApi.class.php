@@ -105,6 +105,12 @@ class RestApi
             'permission_callback' => [$this, 'rest_permission_callback_true']
         ]);
 
+        register_rest_route('api/v1', '/index/page/(?P<page>\d+?$)', [
+            'methods' => 'GET',
+            'callback' => [$this, 'archive_index'],
+            'permission_callback' => [$this, 'rest_permission_callback_true']
+        ]);
+
         register_rest_route('api/v1', '/archive/taxonomy/(?P<taxonomy>[^\/]+?)/term/(?P<slug>[^\/]+?)/page/(?P<page>\d+?$)', [
             'methods' => 'GET',
             'callback' => [$this, 'archive_taxonomy'],
@@ -143,9 +149,6 @@ class RestApi
             return new WP_Error('Invalid Access', 'Invalid Access', ['status' => 400]);
         }
         $taxonomy = $data['taxonomy'];
-        if ($taxonomy === 'tag') {
-            $taxonomy = 'post_tag';
-        }
         $terms = get_terms(['taxonomy' => $taxonomy]);
         $rtn = [];
         if ($terms) foreach ($terms as $term) {
@@ -169,14 +172,29 @@ class RestApi
     function index()
     {
         $meta = $this->meta->get_metaset('home');
+        $recent = new WP_Query(
+            [
+                'post_type' => 'post',
+                'posts_per_page' => 1,
+            ]
+        );
+        $formated_recent = $this->format_posts($recent);
         $posts = new WP_Query(
             [
                 'post_type' => 'post',
-                'posts_per_page' => 3,
+                'posts_per_page' => 4,
+                'offset' => 1
             ]
         );
         $formated_posts = $this->format_posts($posts);
-        return new WP_REST_Response(['meta' => $meta, 'posts' => $formated_posts], 200);
+        $news = new WP_Query(
+            [
+                'post_type' => 'news',
+                'posts_per_page' => -1
+            ]
+        );
+        $formated_news = $this->format_posts($news);
+        return new WP_REST_Response(['meta' => $meta, 'recent' => $formated_recent, 'posts' => $formated_posts, 'news' => $formated_news, 'more_page' => $posts->max_num_pages, 'max_page' => ceil(($posts->found_posts - 5) / 10) + 1], 200);
     }
     function article(WP_REST_Request $data)
     {
@@ -229,6 +247,27 @@ class RestApi
         $breadcrumbs = $this->breadcrumbs->single($post);
         return new WP_REST_Response(['meta' => $meta, 'post' => $formated_post, 'pagination' => $pagination, 'relation' => $relation, 'breadcrumbs' => $breadcrumbs], 200);
     }
+    function archive_index(WP_REST_Request $data)
+    {
+        $page = $data['page'];
+        if (empty($page)) {
+            return new WP_Error('Invalid Access', 'Invalid Access', ['status' => 400]);
+        }
+        $post_type = 'post';
+        $posts = new WP_Query([
+            'post_type' => $post_type,
+            'offset' => 10 * ($page - 2) + 5,
+        ]);
+        if (!$posts->have_posts()) {
+            return new WP_Error('Invalid Access', 'Not Found', ['status' => 404]);
+        }
+        $post_type_obj = get_post_type_object($post_type);
+        $meta = $this->meta->get_metaset('archive', ['post_type' => $post_type, 'label' => $post_type_obj->label]);
+        $formated_posts = $this->format_posts($posts);
+        $pagination = Pagination::init($posts, 'post_type', $post_type === "post" ? 'article' : $post_type);
+        $breadcrumbs = $this->breadcrumbs->archive_post_type($post_type_obj);
+        return new WP_REST_Response(['meta' => $meta, 'posts' => $formated_posts, 'pagination' => $pagination->get_pagination_array(), 'breadcrumbs' => $breadcrumbs, 'label' => $post_type_obj->label], 200);
+    }
     function archive_article(WP_REST_Request $data)
     {
         $page = $data['page'];
@@ -255,14 +294,11 @@ class RestApi
     }
     function archive_taxonomy(WP_REST_Request $data)
     {
-        $taxonomy = $data['taxonomy'];
-        $slug = $data['slug'];
-        $page = $data['page'];
+        $taxonomy = $data->get_param('taxonomy');
+        $slug = $data->get_param('slug');
+        $page = $data->get_param('page');
         if (empty($page) || empty($slug) || empty($taxonomy)) {
             return new WP_Error('Invalid Access', 'Invalid Access', ['status' => 400]);
-        }
-        if ($taxonomy === 'tag') {
-            $taxonomy = 'post_tag';
         }
         $posts = new WP_Query([
             'paged' => $page,
@@ -324,6 +360,21 @@ class RestApi
     function format_post(WP_Post $post, ?bool $has_content = true): array
     {
         $thumb = get_post_thumbnail_id($post->ID);
+
+        $blocks = parse_blocks($post->post_content);
+        $h2 = [];
+        $i = 0;
+        $index = 0;
+        if (!empty($blocks)) foreach ($blocks as $b) if ($b['blockName'] === "core/heading") {
+            if (empty($b['attrs']['level'])) {
+                $i++;
+                $h2[] = [
+                    'text' => trim(strip_tags($b['innerHTML'])),
+                    'id' => sanitize_title_with_dashes($b['innerHTML']),
+                ];
+                $index++;
+            }
+        }
         $rtn = [
             'id' => $post->ID,
             'title' => $post->post_title,
@@ -331,7 +382,8 @@ class RestApi
             'date' => get_the_date('Y.m.d', $post),
             'taxonomies' => $this->post_taxonomies($post),
             'thumbnail' => !empty($thumb) ? wp_get_attachment_image_src($thumb, 'full') : null,
-            'post_type' => ($post->post_type === 'post') ? 'article' : $post->post_type
+            'post_type' => ($post->post_type === 'post') ? 'article' : $post->post_type,
+            'toc' => $h2
         ];
         return $rtn;
     }
@@ -429,7 +481,7 @@ class RestApi
     function post_relation(WP_Post $post): ?array
     {
         $args = [
-            'posts_per_page' => 3,
+            'posts_per_page' => 2,
             'post_type' => $post->post_type,
             'post__not_in' => [$post->ID],
         ];

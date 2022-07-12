@@ -1,22 +1,27 @@
 const HeaderMenuData = [
     {
-        text: 'TOP',
-        href: '/',
+        text: 'サイトのはなし',
+        href: '/about/',
         isBlank: false
     },
     {
-        text: '新着記事',
-        href: '/page/1/',
+        text: '記事',
+        href: '/article/archive/',
+        isBlank: false
+    },
+    {
+        text: '児童向け教材',
+        href: '/education/',
+        isBlank: false
+    },
+    {
+        text: 'リーダー研修',
+        href: '/training/',
         isBlank: false
     },
     {
         text: 'お問い合わせ',
         href: '/contact/',
-        isBlank: false
-    },
-    {
-        text: 'プライバシーポリシー',
-        href: '/privacy/',
         isBlank: false
     }
 ]

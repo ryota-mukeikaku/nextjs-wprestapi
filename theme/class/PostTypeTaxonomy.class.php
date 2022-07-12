@@ -24,6 +24,7 @@ class PostTypeTaxonomy
         'hierarchical' => true,
         'public' => true,
         'show_ui' => true,
+        'show_in_rest' => true,
     ];
 
     private function __construct()
@@ -41,7 +42,7 @@ class PostTypeTaxonomy
     public function init_callback(): void
     {
         // 投稿タイプとタクソノミーを登録
-        // $this->register_exaple(); // 投稿タイプ毎に追加
+        $this->register_exaple(); // 投稿タイプ毎に追加
 
         // カスタム投稿タイプのpermalinkをslugからpost_idに変更
         // add_action('registered_post_type', [$this, 'replace_permalink_from_slug_to_id'], 1);
@@ -50,23 +51,23 @@ class PostTypeTaxonomy
         // add_action('admin_init', [$this, 'term_slug_filter']);
 
         // 標準の投稿タイプ・タクソノミーを無効
-        // $this->disable_post();
+        $this->disable_post();
     }
 
     public function register_exaple(): void
     {
         $args = array_merge(self::$dafault_post_type_args, array(
-            'label' => 'POST TYPE NAME',
-            'rewrite' => array('slug' => 'post_type_name')
+            'label' => 'News',
+            'rewrite' => array('slug' => 'news')
         ));
-        register_post_type('post_type_name', $args);
+        register_post_type('news', $args);
 
 
         $args = array_merge(self::$default_taxonomy_args, array(
-            'label' => 'TAXONOMY NAME',
-            'rewrite' => array('slug' => 'taxonomy slug')
+            'label' => 'タグ',
+            'rewrite' => array('slug' => 'tag')
         ));
-        register_taxonomy('taxonomy_name', array('post_type_name'), $args);
+        register_taxonomy('tag', array('post'), $args);
     }
 
     public function replace_permalink_from_slug_to_id(): void
@@ -115,19 +116,19 @@ class PostTypeTaxonomy
     public function disable_post(): void
     {
         // カテゴリーとポストタグを無効
-        unregister_taxonomy_for_object_type('category', 'post');
+        // unregister_taxonomy_for_object_type('category', 'post');
         unregister_taxonomy_for_object_type('post_tag', 'post');
 
         // 投稿タイプ、タクソノミーを404にする
-        add_action('template_redirect', 'redirect_404_default_post_type_taxonomy');
+        // add_action('template_redirect', 'redirect_404_default_post_type_taxonomy');
 
         // 念の為リライトルールを削除
-        add_filter('rewrite_rules_array', [$this, 'delete_default_post_type_rewrite_rules']);
+        // add_filter('rewrite_rules_array', [$this, 'delete_default_post_type_rewrite_rules']);
 
         // 管理画面から非表示
-        add_action('admin_menu', function (): void {
-            remove_menu_page('edit.php');
-        });
+        // add_action('admin_menu', function (): void {
+        // remove_menu_page('edit.php');
+        // });
     }
 
     public function delete_default_post_type_rewrite_rules(array $rules): array

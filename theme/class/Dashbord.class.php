@@ -27,7 +27,9 @@ class Dashbord
         // add_action('wp_dashboard_setup', [$this, 'add_custom_widget']);
 
         // クイック編集の禁止
-        add_action('admin_menu', [$this, 'disable_quick_edit']);
+        if (!is_local()) {
+            add_action('admin_menu', [$this, 'disable_quick_edit']);
+        }
 
         // ログイン画面のロゴと背景を変更
         add_action('login_head', [$this, 'replace_login_logo']);

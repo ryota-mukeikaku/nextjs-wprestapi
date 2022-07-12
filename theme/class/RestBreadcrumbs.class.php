@@ -61,7 +61,7 @@ class RestBreadcrumbs
         ];
         return $this->rtn;
     }
-    public function archive_taxonomy(WP_Taxonomy $taxonomy_obj): array
+    public function archive_taxonomy($taxonomy_obj): array
     {
         $post_types = get_post_types(['_builtin' => false]);
         $post_types['post'] = 'post';
@@ -76,16 +76,16 @@ class RestBreadcrumbs
             $post_type_obj = get_post_type_object($matched_post_type);
             $this->rtn[] = [
                 'title' => $post_type_obj->label,
-                'url' => ($post_type_obj->name === 'post') ? '/page/1/' : '/' . $post_type_obj->name . '/'
+                'url' => ($post_type_obj->name === 'post') ? '/article/page/1/' : '/' . $post_type_obj->name . '/'
             ];
             $this->rtn[] = [
                 'title' => $taxonomy_obj->name,
-                'url' => ($post_type_obj->name === 'post') ? '/' . $taxonomy_obj->taxonomy . '/' . $taxonomy_obj->slug . '/' : '/' . $post_type_obj->name . '/' . $taxonomy_obj->taxonomy . '/' . $taxonomy_obj->slug . '/'
+                'url' => ($post_type_obj->name === 'post') ? '/article/' . $taxonomy_obj->taxonomy . '/' . $taxonomy_obj->slug . '/' : '/article/' . $post_type_obj->name . '/' . $taxonomy_obj->taxonomy . '/' . $taxonomy_obj->slug . '/'
             ];
         } else {
             $this->rtn[] = [
                 'title' => $taxonomy_obj->label,
-                'url' => '/' . $taxonomy_obj->taxonomy . '/' . $taxonomy_obj->slug . '/'
+                'url' => '/article/' . $taxonomy_obj->taxonomy . '/' . $taxonomy_obj->slug . '/'
             ];
         }
         return $this->rtn;

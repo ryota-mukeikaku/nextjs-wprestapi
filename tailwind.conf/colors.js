@@ -1,11 +1,22 @@
 module.exports = {
+    beige: '#FFF3DC',
+    orange: '#FFB11B',
+    lime: '#BEC23F',
+    green: '#5DAC81',
+    blue: '#7DB9DE',
+    red2: '#FF4E00',
     white: '#ffffff',
-    black: '#000000',
+    black: '#1D1D1D',
     border: '#999999',
-    red: '#ff0000',
-    gray: {
-        dark: '#333333',
-        default: '#666666',
-        light: '#CCCCCC',
-    },
-};
+    red: '#E83015',
+    gray: '#999999',
+    gray2: '#CCCCCC',
+    beige2: '#FCF7F1',
+    washoku: '#E83015',
+    education: '#E03C8A',
+    event: '#026A96',
+    media: '#7DB9DE',
+    model: '#5DAC81',
+    recipe: '#FFB11B',
+    training: '#BEC23F'
+}

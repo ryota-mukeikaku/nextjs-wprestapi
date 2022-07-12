@@ -24,9 +24,9 @@ class Media
         add_filter('wp_calculate_image_srcset_meta', '__return_null');
 
         // リサイズ画像を作成させない
-        add_filter('intermediate_image_sizes_advanced', function () {
-            return [];
-        });
+        // add_filter('intermediate_image_sizes_advanced', function () {
+        //     return [];
+        // });
         add_filter('big_image_size_threshold', '__return_false');
 
         // オリジナルファイルのサイズ制限

@@ -1,4 +1,40 @@
-.layout-main {
-    width: min(100% - 4rem, 100rem);
+.layout-large {
+    width: min(100% - 3.2rem, 164rem);
     margin-inline: auto;
+}
+.layout-pageheader {
+    width: min(100% - 4.8rem, 164rem);
+    margin-inline: auto;
+}
+.layout-main {
+    width: min(100% - 3.2rem, 140rem);
+    margin-inline: auto;
+}
+.layout-medium {
+    width: min(100% - 3.2rem, 128rem);
+    margin-inline: auto;
+}
+
+.layout-special {
+    width: min(100% - 7.5rem, 128rem);
+    margin-inline: auto;
+}
+
+.layout-special-youtube {
+    width: min(100% - 4.8rem, 128rem);
+    margin-inline: auto;
+}
+
+.layout-small {
+    width: min(100% - 7.5rem, 100rem);
+    margin-inline: auto;
+}
+
+.layout-small-youtube {
+    width: min(100% - 4.8rem, 100rem);
+    margin-inline: auto;
+}
+
+.post_content__body {
+    @apply @SP:mx-auto w-300 @PC:w-1000;
 }

@@ -29,7 +29,7 @@ class Gutenberg
     {
 
         // カスタムブロック追加
-        $this->add_custom_blocks();
+        // $this->add_custom_blocks();
 
         // core/headingブロックにidを付与
         add_filter('render_block',  [$this, 'add_id_to_heading_block'], 10, 2);
@@ -38,8 +38,8 @@ class Gutenberg
         $this->setup_preview_description_blocks();
 
         // Relationブロックのcurl用エンドポイント追加
-        add_filter('wp_headers', [$this, 'add_access_control_header']);
-        add_action('rest_api_init', [$this, 'add_relation_block_curl_endpoint']);
+        // add_filter('wp_headers', [$this, 'add_access_control_header']);
+        // add_action('rest_api_init', [$this, 'add_relation_block_curl_endpoint']);
 
         // 使用ブロックのホワイトリスト
         add_filter('allowed_block_types_all', [$this, 'block_white_list']);
@@ -137,18 +137,18 @@ class Gutenberg
             'core/paragraph',
             'core/heading',
             'core/image',
-            'core/quote',
+            // 'core/quote',
             'core/list',
-            'core/table',
+            // 'core/table',
             'core/embed',
-            'theme/profile',
-            'theme/dl',
-            'theme/columns',
-            'theme/speech',
-            'theme/relation',
-            'theme/button',
-            'theme/cv',
-            'theme/toc',
+            // 'theme/profile',
+            // 'theme/dl',
+            // 'theme/columns',
+            // 'theme/speech',
+            // 'theme/relation',
+            // 'theme/button',
+            // 'theme/cv',
+            // 'theme/toc',
         ];
         return $allowed_block_types;
     }

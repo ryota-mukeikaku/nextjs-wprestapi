@@ -1,10 +1,28 @@
 %core {
+    @apply text-15 leading-32 @PC:text-20 @PC:leading-40 mt-20 @PC:mt-40;
+
     h2 {
-        @apply text-36 mt-64;
+        @apply font-bold text-25 leading-37 @PC:text-40 @PC:leading-60 mt-80 @PC:mt-120;
+        &:before {
+            content: '';
+            background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20width%3D%2219%22%20height%3D%2223%22%20viewBox%3D%220%200%2019%2023%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%20%3Cpath%20d%3D%22M2%204.58545L13.7495%2021.7684%22%20stroke%3D%22%23FF4E00%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20%2F%3E%20%3Cpath%20d%3D%22M12.4492%201L17.3403%2020.9305%22%20stroke%3D%22%23FF4E00%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20%2F%3E%3C%2Fsvg%3E');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            transform: translateY(0.1rem);
+            @apply w-19 h-24 @PC:w-24 @PC:h-33 inline-block mr-7 @PC:mr-19;
+        }
     }
 
     h3 {
-        @apply text-24 mt-48;
+        @apply font-bold text-20 leading-32 @PC:text-28 @PC:leading-50 mt-60 @PC:mt-80;
+        & + h4 {
+            @apply mt-32 @PC:mt-40;
+        }
+    }
+
+    h4 {
+        @apply font-bold text-18 leading-20 @PC:text-26 @PC:leading-40 mt-60 @PC:mt-64;
     }
 
     strong {
@@ -20,6 +38,7 @@
     }
 
     .image {
+        @apply mt-60 @PC:mt-80;
         figcaption {
             @apply text-12 text-center mt-8;
         }

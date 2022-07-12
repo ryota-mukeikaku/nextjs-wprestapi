@@ -5,8 +5,8 @@ module.exports = {
         screens: require('./tailwind.conf/screens'),
         colors: require('./tailwind.conf/colors'),
         fontFamily: {
-            jp: "'Noto Sans JP', sans-serif",
-            en: "'Open Sans', sans-serif",
+            jp: "'BIZ UDGothic', sans-serif",
+            en: "'Montserrat', sans-serif"
         },
         spacing: require('./tailwind.conf/spacing'),
         maxWidth: require('./tailwind.conf/spacing'),
@@ -18,8 +18,11 @@ module.exports = {
         borderRadius: require('./tailwind.conf/borderRadius'),
         extend: {
             transitionProperty: {
-                color: 'color',
+                color: 'color'
             },
-        },
-    },
-};
+            aspectRatio: {
+                thumb: '1.6'
+            }
+        }
+    }
+}

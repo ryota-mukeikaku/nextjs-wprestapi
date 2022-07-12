@@ -72,7 +72,7 @@ const PageTransition = (props: Props) => {
         <>
             <div
                 ref={pageTransitionRef}
-                className='fixed w-full h-full bg-gray-dark top-0 left-0 opacity-0 z-[10000]'
+                className='fixed w-full h-full bg-baige top-0 left-0 opacity-1 z-[10000]'
             />
         </>
     )

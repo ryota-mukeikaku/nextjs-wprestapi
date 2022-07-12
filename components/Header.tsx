@@ -27,24 +27,37 @@ export default function Header() {
 
     return (
         <header
-            className={`h-100 w-full pt-20 bg-gray-default fixed top-0 left-0`}
+            className={`z-30 pt-23 @PC:pt-0 h-100 @PC:h-140 pl-20 @PC:pl-40 w-full fixed top-0 left-0 @PC:flex @PC:gap-x-160 @PC:items-center`}
         >
-            <div className='layout-main flex justify-between'>
-                <div className={`w-120 h-60 text-white`}>
+            <div className='flex justify-between'>
+                <div className={`z-30 w-220 h-26 @PC:w-401 @PC:h-57 text-white`}>
                     {isHome && (
                         <h1>
-                            <SVGSprite name='logo' />
+                            <div className='hidden @PC:block'>
+                                <SVGSprite name='logo' />
+                            </div>
+                            <div className='@PC:hidden'>
+                                <SVGSprite name='logo-sp' />
+                            </div>
                         </h1>
                     )}
                     {!isHome && (
                         <Link href='/'>
-                            <a className={``}>
-                                <SVGSprite name='logo' />
+                            <a className={``} onClick={() => { setOpen(false) }}>
+                                <div className='hidden @PC:block'>
+                                    <SVGSprite name='logo' />
+                                </div>
+                                <div className='@PC:hidden'>
+                                    <SVGSprite name='logo-sp' />
+                                </div>
                             </a>
                         </Link>
                     )}
                 </div>
                 <Hamburger open={open} setOpen={setOpen} />
+                <div className={`${open ? 'text-beige' : 'text-white'} z-30 absolute top-0 right-0 w-110 h-93 @PC:hidden`}>
+                    <SVGSprite name="hamburger-bg" />
+                </div>
             </div>
             <HeaderMenu open={open} setOpen={setOpen} />
         </header>
